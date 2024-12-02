@@ -1,14 +1,14 @@
-def _check_report(report):
+def _check_report(report: list) -> bool:
     if report == sorted(report) or report == sorted(report, reverse=True):
         if all(0 < abs(earlier - later) <= 3 for earlier, later in zip(report, report[1:])):
             return True
 
 
-def part_1(data):
+def part_1(data: list) -> int:
     return sum([True for report in data if _check_report(report)])
 
 
-def part_2(data):
+def part_2(data: list) -> int:
     return sum(
         [
             True
@@ -23,7 +23,8 @@ def main():
     with open("input2.txt") as f:
         data = [list(map(int, x.strip().split(" "))) for x in f.readlines()]
 
-    print(part_2(data))
+    print(f"Part 1: {part_1(data)}")
+    print(f"Part 2: {part_2(data)}")
 
 
 if __name__ == "__main__":
