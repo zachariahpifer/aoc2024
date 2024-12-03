@@ -1,5 +1,5 @@
 def _check_report(report: list) -> bool:
-    if report == sorted(report) or report == sorted(report, reverse=True):
+    if any(report == r for r in (sorted(report), sorted(report, reverse=True))):
         if all(0 < abs(earlier - later) <= 3 for earlier, later in zip(report, report[1:])):
             return True
 
